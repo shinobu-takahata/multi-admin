@@ -5,7 +5,7 @@ routes
 import time
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from routers import auth as auth_route, item as item_route
+from routers import item as item_route
 
 app = FastAPI()
 
@@ -28,4 +28,3 @@ async def add_process_time_header(request: Request, call_next):
 
 
 app.include_router(item_route.router)
-app.include_router(auth_route.router)

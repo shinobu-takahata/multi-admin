@@ -1,9 +1,14 @@
 from datetime import datetime
+from enum import Enum as PureEnum
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Enum
 from sqlalchemy.orm import declarative_base, relationship
-from schemas.schemas import ItemStatus
 
 Base = declarative_base()
+
+
+class ItemStatus(PureEnum):
+    ON_SALE = "ON_SALE"
+    SOLD_OUT = "SOLD_OUT"
 
 
 class Item(Base):

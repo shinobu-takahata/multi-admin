@@ -6,7 +6,7 @@ services:
       context: ../admin-a/backend/app
       dockerfile: Dockerfile
     volumes:
-      - ./app:/app
+      - ../admin-a/backend/app:/app
     ports:
       - "8000:80"
     # user: "devuser"
@@ -14,6 +14,15 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://fastapiuser:fastapipass@db:5432/fleamarket
+
+  db-model:
+    build:
+      context: ../database/app
+      dockerfile: Dockerfile
+    volumes:
+      - ../database/app:/app
+    depends_on:
+      - db
 
   db:
     image: postgres:16-alpine

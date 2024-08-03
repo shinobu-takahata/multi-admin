@@ -1,0 +1,58 @@
+{
+  "name": "FastAPI Development Container",
+  "dockerComposeFile": "../../docker/docker-compose.yml",
+  "service": "db-model",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.formatOnSave": true
+        },
+        "python.languageServer": "Pylance",
+        "python.analysis.autoImportCompletions": true,
+        // 最大文字数などのオプション引数を指定する場合
+        "black-formatter.args": ["--line-length=75"],
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": "explicit"
+        }
+        // "python.languageServer": "Pylance",
+        // "[python]": {
+        //   "editor.insertSpaces": true,
+        //   "editor.tabSize": 4,
+        //   "editor.formatOnType": true,
+        //   "editor.formatOnSave": true
+        // },
+        // "python.formatting.provider": "yapf",
+        // "python.formatting.yapfArgs": [
+        //     "--style",
+        //     "{based_on_style: google, column_limit: 100, indent_width: 4}"
+        // ],
+        // "python.sortImports.args": [
+        //   "--profile",
+        //   "black"
+        // ],
+        // "editor.codeActionsOnSave": {
+        //   "source.organizeImports": "explicit",
+        //   "source.fixAll": "explicit"
+        // },
+        // "pylint.args": [
+        //     "--rcfile=/path/to/your/.pylintrc"
+        // ]
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.pylint",
+        "ms-python.flake8",
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        "ms-python.vscode-pylance",
+        "amazonwebservices.amazon-q-vscode"
+      ]
+    }
+  },
+  // "remoteUser": "devuser",
+  "postCreateCommand": "pip install --upgrade pip && pip install poetry && poetry install --no-root"
+}
