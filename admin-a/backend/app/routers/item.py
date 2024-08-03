@@ -11,7 +11,6 @@ from repository.item_repository import ItemRepositoryImpl
 
 # from routers.auth import get_user
 from schemas.schemas import ItemCreate, ItemResponse, ItemUpdate
-from schemas.userschema import DecodedToken
 from use_cases.item_use_case import ItemUseCase
 
 # from cruds.jwk import jwks
@@ -37,6 +36,9 @@ def get_item(
     try:
         item = use_case.get_item(item_id)
     except ItemNotFoundException as exc:
+        print(
+            "いえいえいえいえいえいえいえいえいえいえいえいえいえいえいえいえいえ"
+        )
         raise HTTPException(
             status_code=404, detail="Item not found"
         ) from exc
