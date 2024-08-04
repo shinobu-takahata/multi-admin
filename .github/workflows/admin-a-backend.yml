@@ -3,11 +3,7 @@ name: Flake8
 on:
   pull_request:
     paths:
-      - "admin-a/backend/app/domain/**"
-      - "admin-a/backend/app/use_cases/**"
-      - "admin-a/backend/app/repository/**"
-      - "admin-a/backend/app/schemas/**"
-      - "admin-a/backend/app/routers/**"
+      - "admin-a/backend/app/**"
 
 jobs:
   flake8:
@@ -23,9 +19,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8
       - name: Run flake8
+        working-directory: admin-a/backend/app
         run: |
-          flake8 admin-a/backend/app/domain --config=.flake8 --count --show-source --statistics
-          flake8 admin-a/backend/app/use_cases --config=.flake8 --count --show-source --statistics
-          flake8 admin-a/backend/app/repository --config=.flake8 --count --show-source --statistics
-          flake8 admin-a/backend/app/schemas --config=.flake8 --count --show-source --statistics
-          flake8 admin-a/backend/app/routers --config=.flake8 --count --show-source --statistics
+          flake8 domain --config=.flake8 --count --show-source --statistics
+          flake8 use_cases --config=.flake8 --count --show-source --statistics
+          flake8 repository --config=.flake8 --count --show-source --statistics
+          flake8 schemas --config=.flake8 --count --show-source --statistics
+          flake8 routers --config=.flake8 --count --show-source --statistics
