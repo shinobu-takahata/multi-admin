@@ -31,7 +31,9 @@ class ItemService:
 
         update_data = {
             key: self.update_if_not_none(getattr(existing_item, key), value)
-            for key, value in item_update.model_dump(exclude_unset=True).items()
+            for key, value in item_update.model_dump(
+                exclude_unset=True
+            ).items()
         }
 
         for key, value in update_data.items():
