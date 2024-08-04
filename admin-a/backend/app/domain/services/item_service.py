@@ -1,6 +1,5 @@
 from typing import Optional
 
-# from secretstorage import ItemNotFoundException
 from domain.entities.item import Item
 from domain.exceptions.exception import ItemNotFoundException
 from domain.interfaces.item_repository import ItemRepository
@@ -29,9 +28,7 @@ class ItemService:
             raise ItemNotFoundException("Item Not Found")
 
         update_data = {
-            key: self.update_if_not_none(
-                getattr(existing_item, key), value
-            )
+            key: self.update_if_not_none(getattr(existing_item, key), value)
             for key, value in item_update.model_dump(
                 exclude_unset=True
             ).items()
