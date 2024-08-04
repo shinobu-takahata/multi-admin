@@ -3,11 +3,7 @@ name: Flake8
 on:
   pull_request:
     paths:
-      - "multi-admin/admin-a/backend/app/domain/**"
-      - "multi-admin/admin-a/backend/app/use_cases/**"
-      - "multi-admin/admin-a/backend/app/repository/**"
-      - "multi-admin/admin-a/backend/app/schemas/**"
-      - "multi-admin/admin-a/backend/app/routers/**"
+      - "admin-a/backend/app/**"
 
 jobs:
   flake8:
@@ -17,15 +13,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.11" # 使用するPythonのバージョンを指定
+          python-version: "3.11"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install flake8
       - name: Run flake8
+        working-directory: admin-a/backend/app
         run: |
-          flake8 multi-admin/admin-a/backend/app/domain --count --show-source --statistics
-          flake8 multi-admin/admin-a/backend/app/use_cases --count --show-source --statistics
-          flake8 multi-admin/admin-a/backend/app/repository --count --show-source --statistics
-          flake8 multi-admin/admin-a/backend/app/schemas --count --show-source --statistics
-          flake8 multi-admin/admin-a/backend/app/routers --count --show-source --statistics
+          flake8 domain --config=.flake8 --count --show-source --statistics
+          flake8 use_cases --config=.flake8 --count --show-source --statistics
+          flake8 repository --config=.flake8 --count --show-source --statistics
+          flake8 schemas --config=.flake8 --count --show-source --statistics
+          flake8 routers --config=.flake8 --count --show-source --statistics
