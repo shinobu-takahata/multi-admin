@@ -3,11 +3,11 @@ name: Flake8
 on:
   pull_request:
     paths:
-      - "multi-admin/admin-a/backend/app/domain/**"
-      - "multi-admin/admin-a/backend/app/use_cases/**"
-      - "multi-admin/admin-a/backend/app/repository/**"
-      - "multi-admin/admin-a/backend/app/schemas/**"
-      - "multi-admin/admin-a/backend/app/routers/**"
+      - "admin-a/backend/app/domain/**"
+      - "admin-a/backend/app/use_cases/**"
+      - "admin-a/backend/app/repository/**"
+      - "admin-a/backend/app/schemas/**"
+      - "admin-a/backend/app/routers/**"
 
 jobs:
   flake8:
@@ -24,8 +24,8 @@ jobs:
           pip install flake8
       - name: Run flake8
         run: |
-          flake8 multi-admin/admin-a/backend/app/domain --count --show-source --statistics
-          flake8 multi-admin/admin-a/backend/app/use_cases --count --show-source --statistics
-          flake8 multi-admin/admin-a/backend/app/repository --count --show-source --statistics
-          flake8 multi-admin/admin-a/backend/app/schemas --count --show-source --statistics
-          flake8 multi-admin/admin-a/backend/app/routers --count --show-source --statistics
+          flake8 admin-a/backend/app/domain --count --show-source --statistics
+          flake8 admin-a/backend/app/use_cases --count --show-source --statistics
+          flake8 admin-a/backend/app/repository --count --show-source --statistics
+          flake8 admin-a/backend/app/schemas --count --show-source --statistics
+          flake8 admin-a/backend/app/routers --count --show-source --statistics
