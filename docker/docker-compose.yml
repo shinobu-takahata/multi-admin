@@ -25,32 +25,31 @@ services:
       - db
 
   db:
-    image: postgres:16-alpine
+    image: mysql:8.0
     container_name: poc-db
     ports:
-      - 5432:5432
+      - 3306:3306
     volumes:
-      - ./docker/postgres/init.d:/docker-entrypoint-initdb.d
-      - ./docker/postgres/pgdata:/var/lib/postgresql/data
+      - ./docker/mysql/init.d:/docker-entrypoint-initdb.d
+      - ./docker/mysql/data:/var/lib/mysql
     environment:
-      POSTGRES_USER: fastapiuser
-      POSTGRES_PASSWORD: fastapipass
-      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
-      POSTGRES_DB: fleamarket
-    hostname: postgres
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: fastapiuser
+      MYSQL_PASSWORD: fastapipass
+      MYSQL_DATABASE: fleamarket
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    hostname: mysql
     restart: always
-    user: root
 
-  pgadmin:
-    image: dpage/pgadmin4
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
     restart: always
     ports:
       - 81:80
     environment:
-      PGADMIN_DEFAULT_EMAIL: fastapi@example.com
-      PGADMIN_DEFAULT_PASSWORD: password
-    volumes:
-      - ./docker/pgadmin:/var/lib/pgadmin
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=fastapiuser
+      - PMA_PASSWORD=fastapipass
     depends_on:
       - db
-    user: root
