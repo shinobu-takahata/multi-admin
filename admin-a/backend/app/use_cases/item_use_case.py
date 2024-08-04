@@ -12,7 +12,8 @@ class ItemUseCase:
         return self.item_service.get_item(item_id)
 
     def create_item(self, item: Item) -> Item:
-        # ここで追加のビジネスロジックを実装可能
+        # 追加の処理を記述します。(create_itemしたあとに何かする系)
+        # 例：メール送信
         return self.item_service.create_item(item)
 
     def update_item(self, item_id: int, item: Item) -> Item:

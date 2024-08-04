@@ -1,24 +1,18 @@
 from typing import Annotated
-from fastapi import APIRouter, Depends, Path, Query, HTTPException
-from starlette import status
-from sqlalchemy.orm import Session
 
 from cruds.cognito import TokenData, verify_cognito_token
-from database import get_db
 from domain.exceptions.exception import ItemNotFoundException
 from domain.services.item_service import ItemService
+from fastapi import APIRouter, Depends, HTTPException
 from repository.item_repository import ItemRepositoryImpl
-
-# from routers.auth import get_user
 from schemas.schemas import ItemCreate, ItemResponse, ItemUpdate
+from sqlalchemy.orm import Session
+from starlette import status
 from use_cases.item_use_case import ItemUseCase
 
-# from cruds.jwk import jwks
+from database import get_db
 
 DbDependency = Annotated[Session, Depends(get_db)]
-# UserDependency = Annotated[
-#     DecodedToken, Depends(auth_crud.get_current_user)
-# ]
 CognitoDependency = Annotated[TokenData, Depends(verify_cognito_token)]
 
 router = APIRouter(prefix="/items", tags=["Items"])
@@ -36,9 +30,6 @@ def get_item(
     try:
         item = use_case.get_item(item_id)
     except ItemNotFoundException as exc:
-        print(
-            "いえいえいえいえいえいえいえいえいえいえいえいえいえいえいえいえいえ"
-        )
         raise HTTPException(
             status_code=404, detail="Item not found"
         ) from exc

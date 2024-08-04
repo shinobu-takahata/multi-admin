@@ -1,5 +1,7 @@
 from typing import Optional
+
 from sqlalchemy.orm import Session
+
 from domain.entities.item import Item
 from domain.interfaces.item_repository import ItemRepository
 from models.models import Item as ItemModel
@@ -10,11 +12,7 @@ class ItemRepositoryImpl(ItemRepository):
         self.db = db
 
     def get_item(self, item_id: int) -> Optional[Item]:
-        return (
-            self.db.query(ItemModel)
-            .filter(ItemModel.id == item_id)
-            .first()
-        )
+        return self.db.query(ItemModel).filter(ItemModel.id == item_id).first()
 
     def create_item(self, item: Item) -> Item:
         new_item = ItemModel(**item.model_dump())
