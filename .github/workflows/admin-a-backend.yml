@@ -24,8 +24,8 @@ jobs:
           pip install flake8
       - name: Run flake8
         run: |
-          flake8 admin-a/backend/app/domain --config=admin-a/backend/app/.flake8 --count --show-source --statistics
-          flake8 admin-a/backend/app/use_cases --config=admin-a/backend/app/.flake8 --count --show-source --statistics
-          flake8 admin-a/backend/app/repository --config=admin-a/backend/app/.flake8 --count --show-source --statistics
-          flake8 admin-a/backend/app/schemas --config=admin-a/backend/app/.flake8 --count --show-source --statistics
-          flake8 admin-a/backend/app/routers --config=admin-a/backend/app/.flake8 --count --show-source --statistics
+          flake8 admin-a/backend/app/domain --config=.flake8 --count --show-source --statistics
+          flake8 admin-a/backend/app/use_cases --config=.flake8 --count --show-source --statistics
+          flake8 admin-a/backend/app/repository --config=.flake8 --count --show-source --statistics
+          flake8 admin-a/backend/app/schemas --config=.flake8 --count --show-source --statistics
+          flake8 admin-a/backend/app/routers --config=.flake8 --count --show-source --statistics
