@@ -1,3 +1,5 @@
+name: rental-car-api-compose
+
 version: "3.8"
 
 services:
@@ -26,7 +28,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: poc-db
+    container_name: api-db
     ports:
       - 3306:3306
     volumes:
