@@ -1,7 +1,5 @@
-import sys
 from typing import Optional
 
-# from secretstorage import ItemNotFoundException
 from domain.entities.item import Item
 from domain.exceptions.exception import ItemNotFoundException
 from domain.interfaces.item_repository import ItemRepository
