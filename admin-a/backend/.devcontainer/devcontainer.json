@@ -20,7 +20,8 @@
         "isort.args": ["--profile", "black"],
         "flake8.args": [
           "--max-line-length=88",
-          "--extend-ignore=E203,E266,E501,W503"
+          "--extend-ignore=E203,E266,E501,W503",
+          "--config=${workspaceFolder}/.flake8"
         ],
         "black-formatter.args": ["--line-length=88"]
       },
