@@ -23,7 +23,7 @@
           "--extend-ignore=E203,E266,E501,W503",
           "--config=${workspaceFolder}/.flake8"
         ],
-        "black-formatter.args": ["--line-length=88"]
+        "black-formatter.args": ["--line-length=79"]
       },
       "extensions": [
         "ms-python.python",
